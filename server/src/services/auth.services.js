@@ -1,4 +1,4 @@
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import { userModel } from '../models/user.models.js';
 import { generarJWT } from '../helpers/generateJWT.js';
 
