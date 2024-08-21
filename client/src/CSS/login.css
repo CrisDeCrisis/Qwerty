@@ -1,0 +1,30 @@
+*{
+  overflow: hidden;
+}
+.gradient-custom-2 {
+    background: #fccb90;
+    background: -webkit-linear-gradient(to right, #2e24ee, #3312c7, #0b52eb, #454bb4);
+    background: linear-gradient(to right, #2e24ee, #3a1eb7, #0b52eb, #454bb4);
+  }
+#signIn-btn{
+  color: white;
+  border: none;
+  transition: 0.5s;
+}
+  
+#all-cont{
+    border: 2px solid rgba(0, 0, 0, 0.23);
+    box-shadow: 0 12px 10px 0 rgba(0, 0, 0, 0.245);
+}
+  
+  @media (min-width: 360px) {
+    .gradient-form {
+      height: 100vh !important;
+    }
+  }
+  @media (min-width: 769px) {
+    .gradient-custom-2 {
+      border-top-right-radius: .3rem;
+      border-bottom-right-radius: .3rem;
+    }
+  }
