@@ -21,3 +21,12 @@ userControllers.loginUser = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+userControllers.getAllUsers = async (req, res) => {
+  try {
+    const response = await userServices.getAllUsers();
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

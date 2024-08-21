@@ -42,3 +42,9 @@ userServices.registerUser = async (user) => {
     message: 'Usuario registrado',
   };
 };
+
+// obtener a todos los usuarios
+userServices.getAllUsers = async () => {
+  const users = await userModel.find();
+  return users;
+};
