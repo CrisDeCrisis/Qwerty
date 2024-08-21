@@ -11,14 +11,10 @@ authServices.loginUser = async (user) => {
   if (!userExists) {
     throw new Error('El email no está registrado');
   }
-  // Verificar que el email no sea nulo
-  if (!Email) {
-    throw new Error('El campo Email es obligatorio');
+  // Verificar que los campos no sean nulos
+  if (!Email || !Contrasenia) {
+    throw new Error('debes ingresar un email y una contraseña');
   }
-  if (!Contrasenia) {
-    throw new Error('El campo Contrasenia es obligatorio');
-  }
-  // Verificar que la contraseña sea correcta
   const validPassword = bcrypt.compareSync(Contrasenia, userExists.Contrasenia);
   if (!validPassword) {
     throw new Error('La contraseña o el email son incorrectos');
