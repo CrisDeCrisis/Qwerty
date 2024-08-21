@@ -33,6 +33,10 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+    Roles: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

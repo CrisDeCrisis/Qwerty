@@ -11,6 +11,7 @@ userServices.registerUser = async (user) => {
     Pais,
     Email,
     Contrasenia,
+    Roles,
   } = user;
   // Verificar que el email no sea nulo
   if (!Email) {
@@ -35,6 +36,7 @@ userServices.registerUser = async (user) => {
     Pais,
     Email,
     Contrasenia: hashPassword,
+    Roles,
   });
   // Guardar el usuario en la base de datos
   await newUser.save();

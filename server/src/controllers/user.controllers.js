@@ -6,7 +6,7 @@ userControllers.registerUser = async (req, res) => {
   try {
     const user = req.body;
     const response = await userServices.registerUser(user);
-    res.json(response);
+    res.status(201).json(response);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
