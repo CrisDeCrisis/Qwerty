@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
 import { userModel } from '../models/user.models.js';
-import { validateJWT } from '../helpers/validateJWT.js';
 export const userServices = {};
 
 userServices.registerUser = async (user) => {
