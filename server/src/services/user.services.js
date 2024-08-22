@@ -100,6 +100,7 @@ userServices.getBloodCompatibility = async (receptor) => {
   } else {
     const compatibleUsers = await userModel.find({
       TipoSangre: { $in: compatibleBloodTypes[receptorTipoSangre] },
+      Roles: 'Donante',
     });
     // Retornar los usuarios compatibles
     return {
@@ -112,6 +113,7 @@ userServices.getBloodCompatibility = async (receptor) => {
         Pais: user.Pais,
         Email: user.Email,
         TipoSangre: user.TipoSangre,
+        Roles: user.Roles,
       })),
     };
   }
