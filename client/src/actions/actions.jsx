@@ -38,10 +38,7 @@ export async function registerUser(NombreUsuario, ApellidoUsuario, Genero, Fecha
 export async function getUsers() {
 
     try {
-        const response = await fetch('http://localhost:3368/user');
-
-        const data = response.json()
-        return data
+        return fetch('http://localhost:3368/user').then(response => response.json())
 
     } catch (error) {
         console.error('Error al realizar la solicitud:', error);

@@ -4,7 +4,6 @@ import '../CSS/landing.css';
 import gota from '../assets/gota.png';
 import Navbar from './Navbar'
 import { useNavigate } from 'react-router-dom';
-import { getUsers } from '../actions/actions';
 
 
 const Landing = () => {
@@ -15,17 +14,8 @@ const Landing = () => {
         navigate('/login');
     };
 
-    const getAllUsers = async () => {
-
-        const users = await getUsers();
-
-        console.log(users)
-
-    }
-
     return (
         <div id='landing-cont' style={{height: '100vh'}}>
-            {getAllUsers()}
             <Container className='rounded bg-white h-100'>
                 <div className='mt-5 p-3'>
                     <Navbar />
