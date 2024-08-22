@@ -9,7 +9,7 @@ authServices.loginUser = async (user) => {
   const userExists = await userModel.findOne({ Email });
   // Verificar que el email exista en la base de datos
   if (!userExists) {
-    throw new Error('El email no está registrado');
+    throw new Error('El usuario no esta registrado');
   }
   // Verificar que los campos no sean nulos
   if (!Email || !Contrasenia) {
