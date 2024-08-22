@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import { userModel } from '../models/user.models.js';
+import { validateJWT } from '../helpers/validateJWT.js';
 export const userServices = {};
 
 userServices.registerUser = async (user) => {
@@ -12,6 +13,7 @@ userServices.registerUser = async (user) => {
     Email,
     Contrasenia,
     Roles,
+    TipoSangre,
   } = user;
   // Verificar que el email no sea nulo
   if (!Email) {
@@ -37,6 +39,7 @@ userServices.registerUser = async (user) => {
     Email,
     Contrasenia: hashPassword,
     Roles,
+    TipoSangre,
   });
   // Guardar el usuario en la base de datos
   await newUser.save();
