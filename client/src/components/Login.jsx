@@ -1,99 +1,68 @@
 import React from 'react';
 import { useState } from 'react';
-import '../CSS/login.css';
-import { useNavigate } from 'react-router-dom';
 import {
     MDBBtn,
+    MDBContainer,
     MDBRow,
     MDBCol,
+    MDBCard,
+    MDBCardBody,
     MDBInput
 }
     from 'mdb-react-ui-kit';
-import { logUser } from '../actions/actions.js';
+import '../CSS/login.css';
+import { logUser } from '../actions/actions';
 
-function Login() {
+function App() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-
-    const handleSubmit = async (e) => {
+    const handleEmailChange = async (e) => {
         e.preventDefault()
 
         const login = await logUser(email, password);
 
-        if(login.error){
-            alert(login.error)
+        if (login.error) {
+            alert("USUARIO O CONTRASEÑA INCORRECTA");
         }else{
-            alert(login.message)
+            alert("BIENVENIDO");
         }
 
     }
 
-    const navigate = useNavigate();
-
-    const handleRegisterClick = () => {
-        navigate('/register');
-    };
-
-
     return (
-        <form onSubmit={handleSubmit} className="my-5 gradient-form container">
+        <MDBContainer fluid>
+            <form onSubmit={handleEmailChange}>
+                <MDBRow className='d-flex justify-content-center align-items-center h-100'>
+                    <MDBCol col='12'>
 
-            <MDBRow id='all-cont' className='bg-white rounded h-75'>
+                        <MDBCard id='login-card' className='bg-white text-dark my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '400px' }}>
+                            <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
 
-                <MDBCol col='6' className="mb-5 h-100">
-                    <div className="d-flex flex-column ms-5">
+                                <h1 style={{ color: '#b91616' }}>BloodLink</h1>
+                                <p className="text-dark-50 mb-5">Please enter your login and password!</p>
 
-                        <div className="text-center">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                                style={{ width: '185px' }} alt="logo" />
-                            <h4 className="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
-                        </div>
+                                <MDBInput wrapperClass='mb-4 mx-5 w-100 border' labelClass='text-white' placeholder='Email address' id='email' value={email} onChange={e => setEmail(e.target.value)} type='email' size="lg" style={{ border: '1px solid #a4a3a3' }} />
+                                <MDBInput wrapperClass='mb-4 mx-5 w-100 border' labelClass='text-white' placeholder='Password' id='password' value={password} onChange={e => setPassword(e.target.value)} type='password' size="lg" style={{ border: '1px solid #a4a3a3' }} />
 
-                        <p>Inicia sesión</p>
+                                <p className="small mb-3 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+                                <MDBBtn type='submit' outline className='mx-2 mb-4 px-5' color='danger' size='lg'>
+                                    Login
+                                </MDBBtn>
 
+                                <div>
+                                    <p className="mb-0">Don't have an account? <a href="#!" class="text-dark-50 fw-bold">Sign Up</a>
+                                    </p>
+                                </div>
+                            </MDBCardBody>
+                        </MDBCard>
 
-                        <MDBInput wrapperClass='mb-4' placeholder='Email' id='email' type='email' value={email} onChange={e => setEmail(e.target.value)} />
-
-                        <MDBInput wrapperClass='mb-4' placeholder='Contraseña' id='pass' type='password' value={password} onChange={e => setPassword(e.target.value)} />
-
-                        <div className="d-flex flex-column align-items-center text-center pt-1 mb-5 pb-1">
-                            <button className="mb-4 w-50 bg-primary rounded" id='signIn-btn' type='submit'>Iniciar</button>
-                            <a className="text-muted" href="#!">Olvidaste la contraseña?</a>
-                        </div>
-
-                        <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
-                            <p className="mb-0">No tienes una cuenta?</p>
-                            <MDBBtn onClick={handleRegisterClick} outline className='mx-2' color='primary'>
-                                Registrarse
-                            </MDBBtn>
-                        </div>
-
-
-                    </div>
-
-                </MDBCol>
-
-                <MDBCol col='6' className="h-100 rounded py-2">
-                    <div className="d-flex flex-column justify-content-center gradient-custom-2 h-100">
-
-                        <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-                            <h4 class="mb-4">We are more than just a company</h4>
-                            <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                        </div>
-
-                    </div>
-
-                </MDBCol>
-
-            </MDBRow>
-
-        </form>
+                    </MDBCol>
+                </MDBRow>
+            </form>
+        </MDBContainer>
     );
 }
 
-export default Login;
+export default App; 
