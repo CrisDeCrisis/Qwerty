@@ -50,3 +50,82 @@ userServices.getAllUsers = async () => {
   const users = await userModel.find();
   return users;
 };
+
+// obtener a un usuario por id
+userServices.getUserById = async (id) => {
+  const user = await userModel.findById(id);
+  if (!user) {
+    throw new Error('Usuario no encontrado');
+  }
+  return user;
+};
+
+// compatibilidad con tipo de sangre donante y receptor
+userServices.getBloodCompatibility = async (receptor) => {
+  // Recibir el id del receptor
+  // Buscar al usuario en la base de datos
+  const receptorUser = await userModel.findOne({ _id: receptor });
+  // Verificar si el usuario existe
+  if (!receptorUser) {
+    throw new Error('Usuario no encontrado');
+  }
+  // Obtener el tipo de sangre del receptor
+  const receptorTipoSangre = receptorUser.TipoSangre;
+  // Verificar si el receptor tiene un tipo de sangre válido
+  if (!receptorTipoSangre) {
+    throw new Error('El receptor no tiene un tipo de sangre válido');
+  }
+  // Verificar compatibilidad de tipo de sangre
+  const compatibleBloodTypes = {
+    // Tipos de sangre compatibles con A+
+    'A+': ['A+', 'A-', 'O+', 'O-'],
+    // Tipos de sangre compatibles con A-
+    'A-': ['A-', 'O-'],
+    // Tipos de sangre compatibles con B+
+    'B+': ['B+', 'B-', 'O+', 'O-'],
+    // Tipos de sangre compatibles con B-
+    'B-': ['B-', 'O-'],
+    // Tipos de sangre compatibles con AB+
+    'AB+': ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
+    // Tipos de sangre compatibles con AB-
+    'AB-': ['A-', 'B-', 'AB-', 'O-'],
+    // Tipos de sangre compatibles con O+
+    'O+': ['O+', 'O-'],
+    // Tipos de sangre compatibles con O-
+    'O-': ['O-'],
+  };
+  // Verificar si el tipo de sangre del receptor es válido
+  if (!compatibleBloodTypes[receptorTipoSangre]) {
+    throw new Error('El receptor tiene un tipo de sangre inválido');
+  } else {
+    const compatibleUsers = await userModel.find({
+      TipoSangre: { $in: compatibleBloodTypes[receptorTipoSangre] },
+      Roles: 'Donante',
+    });
+    // Retornar los usuarios compatibles
+    return {
+      message: 'Tipos de sangre que son compatibles',
+      // Solo retornar los campos necesarios
+      compatibleUsers: compatibleUsers.map((user) => ({
+        NombreUsuario: user.NombreUsuario,
+        ApellidoUsuario: user.ApellidoUsuario,
+        FechaNacimiento: user.FechaNacimiento,
+        Pais: user.Pais,
+        Email: user.Email,
+        TipoSangre: user.TipoSangre,
+        Roles: user.Roles,
+      })),
+    };
+  }
+};
+
+// eliminar a un usuario por id
+userServices.deleteUser = async (id) => {
+  const user = await userModel.findOneAndDelete({ _id: id });
+  if (!user) {
+    throw new Error('Usuario no encontrado');
+  }
+  return {
+    message: 'Usuario eliminado',
+  };
+};
