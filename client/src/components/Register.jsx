@@ -1,5 +1,7 @@
 import React from 'react';
+import { useState } from 'react';
 import '../CSS/register.css';
+import Form from 'react-bootstrap/Form';
 import {
     MDBBtn,
     MDBContainer,
@@ -8,85 +10,133 @@ import {
     MDBCardImage,
     MDBRow,
     MDBCol,
-    MDBInput,
-    MDBRadio
+    MDBInput
 }
     from 'mdb-react-ui-kit';
+    import Button from 'react-bootstrap/Button';
+    import { registerUser } from '../actions/actions.jsx';
 
-function App() {
+function Register() {
+
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [gender, setGender] = useState('');
+    const [birth, setBirth] = useState('');
+    const [country, setCountry] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [rol, setRol] = useState('');
+    const [bloodType, setBloodType] = useState('');
+
+    const handleRegister = async (e) => {
+        e.preventDefault()
+
+        const register = await registerUser(name, lastName, gender, birth, country, email, password, rol, bloodType);
+
+        if (register.error) {
+            alert("DATOS FALTANTES O ERRÓNEOS");
+        } else {
+            alert("USUARIO REGISTRADO");
+        }
+
+    }
+
+    
+
     return (
-        <div className='d-flex align items-center' style={{height: '100vh'}}>
+
+        <div className='d-flex align items-center' style={{ height: '100vh' }}>
             <MDBContainer fluid className='register-card'>
+                <form onSubmit={handleRegister}>
+                    <MDBRow className='d-flex justify-content-center align-items-center h-100'>
+                        <MDBCol>
 
-                <MDBRow className='d-flex justify-content-center align-items-center h-100'>
-                    <MDBCol>
+                            <MDBCard className='my-4'>
 
-                        <MDBCard className='my-4'>
+                                <MDBRow className='g-0'>
 
-                            <MDBRow className='g-0'>
+                                    <MDBCol md='6' className="d-none d-md-block">
+                                        <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp' alt="Sample photo" className="rounded-start" fluid />
+                                    </MDBCol>
 
-                                <MDBCol md='6' className="d-none d-md-block">
-                                    <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp' alt="Sample photo" className="rounded-start" fluid />
-                                </MDBCol>
+                                    <MDBCol md='6'>
 
-                                <MDBCol md='6'>
+                                        <MDBCardBody className='text-black d-flex flex-column justify-content-center'>
+                                            <h1 style={{ color: '#b91616' }}>BloodLink</h1>
 
-                                    <MDBCardBody className='text-black d-flex flex-column justify-content-center'>
-                                        <h3 className="mb-5 text-uppercase fw-bold">Student registration form</h3>
+                                            <MDBRow>
 
-                                        <MDBRow>
+                                                <MDBCol md='6'>
+                                                    <MDBInput wrapperClass='mb-4' placeholder='Nombre' size='lg' id='form1' type='text' value={name} onChange={e => setName(e.target.value)} />
+                                                </MDBCol>
 
-                                            <MDBCol md='6'>
-                                                <MDBInput wrapperClass='mb-4' label='First Name' size='lg' id='form1' type='text' />
-                                            </MDBCol>
+                                                <MDBCol md='6'>
+                                                    <MDBInput wrapperClass='mb-4' placeholder='Apellido' size='lg' id='form2' type='text' value={lastName} onChange={e => setLastName(e.target.value)} />
+                                                </MDBCol>
 
-                                            <MDBCol md='6'>
-                                                <MDBInput wrapperClass='mb-4' label='Last Name' size='lg' id='form2' type='text' />
-                                            </MDBCol>
+                                            </MDBRow>
 
-                                        </MDBRow>
+                                            <Form.Select value={gender} onChange={e => setGender(e.target.value)} aria-label="Default select example" className='mb-4'>
+                                                <option>Seleccione su género</option>
+                                                <option value="Masculino">Masculino</option>
+                                                <option value="Femenino">Femenino</option>
+                                                <option value="Otro">Otro</option>
+                                            </Form.Select>
 
-                                        <MDBInput wrapperClass='mb-4' label='Birthday' size='lg' id='form3' type='text' />
+                                            <MDBInput wrapperClass='mb-4' size='lg' id='form3' type='date' value={birth} onChange={e => setBirth(e.target.value)} />
 
-                                        <div className='d-md-flex ustify-content-start align-items-center mb-4'>
-                                            <h6 class="fw-bold mb-0 me-4">Gender: </h6>
-                                            <MDBRadio name='inlineRadio' id='inlineRadio1' value='option1' label='Female' inline />
-                                            <MDBRadio name='inlineRadio' id='inlineRadio2' value='option2' label='Male' inline />
-                                            <MDBRadio name='inlineRadio' id='inlineRadio3' value='option3' label='Other' inline />
-                                        </div>
+                                            <MDBRow>
 
-                                        <MDBRow>
+                                                <MDBCol md='6'>
+                                                </MDBCol>
 
-                                            <MDBCol md='6'>
-                                            </MDBCol>
+                                                <MDBCol md='6'>
+                                                </MDBCol>
 
-                                            <MDBCol md='6'>
-                                            </MDBCol>
+                                            </MDBRow>
 
-                                        </MDBRow>
+                                            <MDBInput wrapperClass='mb-4' placeholder='País' size='lg' id='form4' type='text' value={country} onChange={e => setCountry(e.target.value)} />
+                                            <MDBInput wrapperClass='mb-4' placeholder='Correo electrónico' size='lg' id='form5' type='text' value={email} onChange={e => setEmail(e.target.value)} />
+                                            <MDBInput wrapperClass='mb-4' placeholder='Contraseña' size='lg' id='form6' type='password' value={password} onChange={e => setPassword(e.target.value)} />
 
-                                        <MDBInput wrapperClass='mb-4' label='Pincode' size='lg' id='form4' type='text' />
-                                        <MDBInput wrapperClass='mb-4' label='Course' size='lg' id='form5' type='text' />
-                                        <MDBInput wrapperClass='mb-4' label='Email ID' size='lg' id='form6' type='text' />
+                                            <Form.Select value={rol} onChange={e => setRol(e.target.value)} aria-label="Default select example" className='mb-4'>
+                                                <option>Seleccione un rol</option>
+                                                <option value="Donante">Donante</option>
+                                                <option value="Receptor">Receptor</option>
+                                                <option value="Médico">Médico</option>
+                                            </Form.Select>
 
-                                        <div className="d-flex justify-content-end pt-3">
-                                            <MDBBtn color='light' size='lg'>Reset all</MDBBtn>
-                                            <MDBBtn className='ms-2' color='warning' size='lg'>Submit form</MDBBtn>
-                                        </div>
 
-                                    </MDBCardBody>
+                                            <Form.Select value={bloodType} onChange={e => setBloodType(e.target.value)} aria-label="Default select example" className='mb-4'>
+                                                <option>Seleccione su grupo sanguíneo</option>
+                                                <option value="A+">A+</option>
+                                                <option value="A-">A-</option>
+                                                <option value="B+">B+</option>
+                                                <option value="B-">B-</option>
+                                                <option value="AB+">AB+</option>
+                                                <option value="AB-">AB-</option>
+                                                <option value="O+">O+</option>
+                                                <option value="O-">O-</option>
+                                            </Form.Select>
 
-                                </MDBCol>
-                            </MDBRow>
+                                            <div className="d-flex justify-content-end pt-3">
+                                                <MDBBtn color='light' size='lg'>Reset all</MDBBtn>
+                                                <Button type='submit' className='ms-2' color='warning' size='lg'>Submit form</Button>
+                                            </div>
 
-                        </MDBCard>
+                                        </MDBCardBody>
 
-                    </MDBCol>
-                </MDBRow>
+                                    </MDBCol>
+                                </MDBRow>
 
+                            </MDBCard>
+
+                        </MDBCol>
+                    </MDBRow>
+                </form>
             </MDBContainer>
         </div>
     );
 }
 
-export default App;
+export default Register;
