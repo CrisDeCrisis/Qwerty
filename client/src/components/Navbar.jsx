@@ -18,7 +18,7 @@ const Topbar = () => {
                             <Nav.Link href="#home" className='text-secondary fw-bold'>Contact</Nav.Link>
                             <Nav.Link href="#home" className='text-secondary fw-bold'>Testimonials</Nav.Link>
                             <Nav.Link href="#home" className='text-secondary fw-bold text-decoration-none border-0'>
-                                <Button size="sm" className="bg_login fw-bold text-decoration-none border-0">login</Button>
+                                <Button size="sm" id='btn-login' className="fw-bold text-decoration-none border-0">Ingresar</Button>
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

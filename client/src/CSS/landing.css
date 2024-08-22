@@ -1,5 +1,10 @@
 body {
-    background-color: rgba(0, 255, 98, 0.685);
+    background-color: rgba(255, 0, 0, 0.685) !important;
+    overflow: hidden;
+}
+
+#landing-cont{
+    height: 100%;
 }
 
 .head_left .h_subTitle {

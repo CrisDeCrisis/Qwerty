@@ -15,9 +15,9 @@ const Landing = () => {
     };
 
     return (
-        <div className='mt-4' id='landing-cont'>
+        <div id='landing-cont' style={{height: '100vh'}}>
             <Container className='rounded bg-white'>
-                <div>
+                <div className='mt-5 p-3'>
                     <Navbar />
                 </div>
                 <Row>
@@ -31,7 +31,7 @@ const Landing = () => {
                                 Discover a world of delicious salad at our online salad paradise. salad meals are ready to eat in a minutes so save time energy.
                             </p>
                             <div className="d-flex justify-content-between align-items-start w-50 mt-4">
-                                <Button onClick={handleLoginClick} className='bg_login fw-bold border-0'>Empieza a donar</Button>
+                                <Button onClick={handleLoginClick} id='btn-login' className='fw-bold border-0'>Empieza a donar</Button>
                             </div>
                         </div>
                     </Col>
