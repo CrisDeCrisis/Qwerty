@@ -11,7 +11,7 @@ import {
 }
     from 'mdb-react-ui-kit';
 import '../CSS/login.css';
-import { logUser } from '../actions/actions';
+import { logUser } from '../actions/actions.jsx';
 
 function App() {
 
@@ -25,7 +25,7 @@ function App() {
 
         if (login.error) {
             alert("USUARIO O CONTRASEÑA INCORRECTA");
-        }else{
+        } else {
             alert("BIENVENIDO");
         }
 

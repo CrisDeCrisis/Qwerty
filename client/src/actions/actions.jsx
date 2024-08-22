@@ -7,7 +7,7 @@ export async function logUser(Email, Contrasenia) {
             },
             body: JSON.stringify({ Email, Contrasenia }),
         });
-        
+
         const data = response.json()
         return data;
 

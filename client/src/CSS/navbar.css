@@ -7,6 +7,7 @@
     text-transform: capitalize;
     transition: 0.5s;
 }
+
 .bg_login:hover {
     background: #8b0d09;
     border: none;
@@ -15,9 +16,11 @@
     padding: 6px 20px;
     text-transform: capitalize;
 }
-a{
+
+a {
     text-decoration: none;
 }
-#navbar{
+
+#navbar {
     box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.245);
 }
