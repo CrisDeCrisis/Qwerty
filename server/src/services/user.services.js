@@ -51,6 +51,15 @@ userServices.getAllUsers = async () => {
   return users;
 };
 
+// obtener a un usuario por id
+userServices.getUserById = async (id) => {
+  const user = await userModel.findById(id);
+  if (!user) {
+    throw new Error('Usuario no encontrado');
+  }
+  return user;
+};
+
 // compatibilidad con tipo de sangre donante y receptor
 userServices.getBloodCompatibility = async (receptor) => {
   // Recibir el id del receptor
@@ -95,6 +104,7 @@ userServices.getBloodCompatibility = async (receptor) => {
     // Retornar los usuarios compatibles
     return {
       message: 'Tipos de sangre que son compatibles',
+      // Solo retornar los campos necesarios
       compatibleUsers: compatibleUsers.map((user) => ({
         NombreUsuario: user.NombreUsuario,
         ApellidoUsuario: user.ApellidoUsuario,
@@ -105,4 +115,15 @@ userServices.getBloodCompatibility = async (receptor) => {
       })),
     };
   }
+};
+
+// eliminar a un usuario por id
+userServices.deleteUser = async (id) => {
+  const user = await userModel.findOneAndDelete({ _id: id });
+  if (!user) {
+    throw new Error('Usuario no encontrado');
+  }
+  return {
+    message: 'Usuario eliminado',
+  };
 };
