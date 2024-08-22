@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import { userModel } from '../models/user.models.js';
+import { validateJWT } from '../helpers/validateJWT.js';
 export const userServices = {};
 
 userServices.registerUser = async (user) => {
@@ -12,6 +13,7 @@ userServices.registerUser = async (user) => {
     Email,
     Contrasenia,
     Roles,
+    TipoSangre,
   } = user;
   // Verificar que el email no sea nulo
   if (!Email) {
@@ -37,6 +39,7 @@ userServices.registerUser = async (user) => {
     Email,
     Contrasenia: hashPassword,
     Roles,
+    TipoSangre,
   });
   // Guardar el usuario en la base de datos
   await newUser.save();
@@ -61,10 +64,13 @@ userServices.getUserById = async (id) => {
 };
 
 // compatibilidad con tipo de sangre donante y receptor
-userServices.getBloodCompatibility = async (receptor) => {
-  // Recibir el id del receptor
+userServices.getBloodCompatibility = async (tokenData) => {
+  const usuarioValido = await validateJWT(tokenData);
+  if (!usuarioValido) {
+    throw new Error('Usuario no autorizado');
+  }
   // Buscar al usuario en la base de datos
-  const receptorUser = await userModel.findOne({ _id: receptor });
+  const receptorUser = await userModel.findOne({ _id: usuarioValido.id });
   // Verificar si el usuario existe
   if (!receptorUser) {
     throw new Error('Usuario no encontrado');

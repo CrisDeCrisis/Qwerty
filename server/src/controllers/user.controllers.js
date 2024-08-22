@@ -33,8 +33,8 @@ userControllers.getAllUsers = async (req, res) => {
 
 userControllers.getBloodCompatibility = async (req, res) => {
   try {
-    const id = req.params.id;
-    const response = await userServices.getBloodCompatibility(id);
+    const token = req.headers.token;
+    const response = await userServices.getBloodCompatibility(token);
     res.json(response);
   } catch (error) {
     res.status(500).json({ error: error.message });
