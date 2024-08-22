@@ -1,5 +1,6 @@
 import { userServices } from '../services/user.services.js';
 import { authServices } from '../services/auth.services.js';
+import { validateJWT } from '../helpers/validateJWT.js';
 export const userControllers = {};
 
 userControllers.registerUser = async (req, res) => {
@@ -33,8 +34,8 @@ userControllers.getAllUsers = async (req, res) => {
 
 userControllers.getBloodCompatibility = async (req, res) => {
   try {
-    const token = req.headers.token;
-    const response = await userServices.getBloodCompatibility(token);
+    const user = req.params.id;
+    const response = await userServices.getBloodCompatibility(user);
     res.json(response);
   } catch (error) {
     res.status(500).json({ error: error.message });

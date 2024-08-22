@@ -9,7 +9,7 @@ export const validateJWT = async (token) => {
     if (!user) {
       return false;
     } else {
-      return true;
+      return user;
     }
   } catch (error) {
     console.log(error);

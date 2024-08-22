@@ -64,13 +64,10 @@ userServices.getUserById = async (id) => {
 };
 
 // compatibilidad con tipo de sangre donante y receptor
-userServices.getBloodCompatibility = async (tokenData) => {
-  const usuarioValido = await validateJWT(tokenData);
-  if (!usuarioValido) {
-    throw new Error('Usuario no autorizado');
-  }
+userServices.getBloodCompatibility = async (receptor) => {
+  // Recibir el id del receptor
   // Buscar al usuario en la base de datos
-  const receptorUser = await userModel.findOne({ _id: usuarioValido.id });
+  const receptorUser = await userModel.findOne({ _id: receptor });
   // Verificar si el usuario existe
   if (!receptorUser) {
     throw new Error('Usuario no encontrado');
