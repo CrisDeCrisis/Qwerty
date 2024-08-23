@@ -3,7 +3,7 @@ import { userControllers } from '../controllers/user.controllers.js';
 
 export const userRoutes = Router();
 
-userRoutes.get('/compatibility', userControllers.getBloodCompatibility);
+userRoutes.get('/match', userControllers.getBloodCompatibility);
 userRoutes.get('/', userControllers.getAllUsers);
 userRoutes.get('/:id', userControllers.getUserById);
 userRoutes.put('/:id', userControllers.updateUser);

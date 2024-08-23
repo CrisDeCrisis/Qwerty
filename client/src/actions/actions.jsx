@@ -52,14 +52,14 @@ export async function getUsers() {
 export async function getUsersByBlood() {
 
     try {
-        const response = await fetch('http://localhost:3368/user/marcos', {
+        const response = await fetch('http://localhost:3368/user/match', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${localStorage.getItem('token')}`
             }
         })
-        
+
         const data = await response.json();
         return data;
 
