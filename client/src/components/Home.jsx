@@ -19,7 +19,7 @@ function Home() {
 
     return (
         <div className='container-cards border rounded'>
-            <PaginatedList items={users} />
+            <PaginatedList items={users}/>
         </div>
     )
 }

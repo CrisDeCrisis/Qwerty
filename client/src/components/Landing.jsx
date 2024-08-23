@@ -1,7 +1,6 @@
 
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import '../CSS/landing.css';
-import gota from '../assets/gota.png';
 import logo from '../assets/logo-bl.png';
 import Navbar from './Navbar'
 import { PieGraph } from './Pie';
