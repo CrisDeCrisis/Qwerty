@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
     MDBContainer,
     MDBRow,
@@ -19,6 +19,8 @@ function App() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigate = useNavigate();
+
     const handleEmailChange = async (e) => {
         e.preventDefault()
 
@@ -27,7 +29,7 @@ function App() {
         if (login.error) {
             alert("USUARIO O CONTRASEÑA INCORRECTA");
         } else {
-            alert("BIENVENIDO");
+            navigate('/home');
         }
 
     }

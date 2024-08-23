@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import '../CSS/register.css';
 import Form from 'react-bootstrap/Form';
+import gota  from '../assets/gota.png';
 import {
-    MDBBtn,
     MDBContainer,
     MDBCard,
     MDBCardBody,
@@ -44,22 +43,20 @@ function Register() {
     
 
     return (
-
-        <div className='d-flex align items-center' style={{ height: '100vh' }}>
-            <MDBContainer fluid className='register-card'>
+            <MDBContainer fluid>
                 <form onSubmit={handleRegister}>
-                    <MDBRow className='d-flex justify-content-center align-items-center h-100'>
-                        <MDBCol>
+                    <MDBRow className='d-flex justify-content-center align-items-center'>
+                        <MDBCol md='6'>
 
                             <MDBCard className='my-4'>
 
                                 <MDBRow className='g-0'>
 
-                                    <MDBCol md='6' className="d-none d-md-block">
-                                        <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp' alt="Sample photo" className="rounded-start" fluid />
+                                    <MDBCol md='4' className="d-flex align-items-center">
+                                        <MDBCardImage src={gota} alt="Sample photo" className="p-2 rounded-start" fluid />
                                     </MDBCol>
 
-                                    <MDBCol md='6'>
+                                    <MDBCol md='8'>
 
                                         <MDBCardBody className='text-black d-flex flex-column justify-content-center'>
                                             <h1 style={{ color: '#b91616' }}>BloodLink</h1>
@@ -120,8 +117,7 @@ function Register() {
                                             </Form.Select>
 
                                             <div className="d-flex justify-content-end pt-3">
-                                                <MDBBtn color='light' size='lg'>Reset all</MDBBtn>
-                                                <Button type='submit' className='ms-2' color='warning' size='lg'>Submit form</Button>
+                                                <Button type='submit' className='ms-2' id='btn-login' size='lg'>Registrarse</Button>
                                             </div>
 
                                         </MDBCardBody>
@@ -135,7 +131,6 @@ function Register() {
                     </MDBRow>
                 </form>
             </MDBContainer>
-        </div>
     );
 }
 

@@ -1,6 +1,7 @@
 import { userServices } from '../services/user.services.js';
 import { authServices } from '../services/auth.services.js';
 import { validateJWT } from '../helpers/validateJWT.js';
+import { verifyJWT } from '../helpers/jwtServices.js';
 export const userControllers = {};
 
 userControllers.registerUser = async (req, res) => {
@@ -33,8 +34,14 @@ userControllers.getAllUsers = async (req, res) => {
 };
 
 userControllers.getBloodCompatibility = async (req, res) => {
+  console.log('getBloodCompatibility');
   try {
-    const user = req.params.id;
+    const token = req.headers.authorization;
+    const { id } = await verifyJWT(token);
+    const user = await userServices.getUserById(id);
+    console.log(user);
+    if (!user) res.status(401).json({ message: 'No autorizado!' });
+
     const response = await userServices.getBloodCompatibility(user);
     res.json(response);
   } catch (error) {

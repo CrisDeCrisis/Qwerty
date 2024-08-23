@@ -9,9 +9,15 @@ const Cards = React.forwardRef(({NombreUsuario, Genero, Pais, Roles, TipoSangre}
        <Card.Body>
          <Card.Title>{NombreUsuario}</Card.Title>
          <Card.Text>
-           {}
+          {Genero}
          </Card.Text>
-         <Card.Title>${precio}</Card.Title>
+         <Card.Text>
+          {Pais}
+         </Card.Text>
+         <Card.Text>
+          {Roles}
+         </Card.Text>
+         <Card.Title>Grupo sanguíneo: {TipoSangre}</Card.Title>
          <Button variant="primary">Comprar</Button>
        </Card.Body>
      
@@ -19,12 +25,10 @@ const Cards = React.forwardRef(({NombreUsuario, Genero, Pais, Roles, TipoSangre}
 
   const content = ref ? (
     <Card ref={ref} style={{ width: "15rem" }}>
-      <Card.Img variant="top" src={image} />
       {cardsBody}
     </Card>
   ) : (
     <Card style={{ width: "15rem" }}>
-      <Card.Img variant="top" src={image} />
       {cardsBody}
     </Card>
   );

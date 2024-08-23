@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react'
-import { getUsers } from '../actions/actions'
+import React, { useEffect, useState } from 'react'
+import { getUsersByBlood } from '../actions/actions'
+import { PaginatedList } from './Paginado'
+
 
 function Home() {
 
-    const getAllUsers = async () => {
-        const users = await getUsers();
-        console.log(users[0].Email);
-    }
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
+        const getAllUsers = async () => {
+            const data = await getUsersByBlood();
+            return setUsers(data.compatibleUsers);
+        }
         getAllUsers();
-    }, []); // El array de dependencias vacío asegura que esto se ejecute solo una vez cuando el componente se monte
+
+    }, []);
 
     return (
-        <div>
-            <h1>hola</h1>
-        </div>
+        <PaginatedList items={users} />
     )
 }
 

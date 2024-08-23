@@ -8,7 +8,8 @@ export async function logUser(Email, Contrasenia) {
             body: JSON.stringify({ Email, Contrasenia }),
         });
 
-        const data = response.json()
+        const data = await response.json()
+        localStorage.setItem('token', data.token)
         return data;
 
     } catch (error) {
@@ -38,7 +39,30 @@ export async function registerUser(NombreUsuario, ApellidoUsuario, Genero, Fecha
 export async function getUsers() {
 
     try {
-        return fetch('http://localhost:3368/user').then(response => response.json())
+        const response = await fetch('http://localhost:3368/user')
+
+        return await response.json()
+
+    } catch (error) {
+        console.error('Error al realizar la solicitud:', error);
+    }
+
+}
+
+export async function getUsersByBlood() {
+
+    try {
+        const response = await fetch('http://localhost:3368/user/marcos', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${localStorage.getItem('token')}`
+            }
+        })
+        
+        const data = await response.json();
+        return data;
+
 
     } catch (error) {
         console.error('Error al realizar la solicitud:', error);
