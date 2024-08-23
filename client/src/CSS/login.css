@@ -13,4 +13,5 @@ body {
 }
 #btn-login:hover{
     background-color: rgb(148, 24, 24)!important;
+    color: white;
 }
