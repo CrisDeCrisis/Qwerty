@@ -1,7 +1,6 @@
 
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import '../CSS/landing.css';
-import gota from '../assets/gota.png';
 import logo from '../assets/logo-bl.png';
 import Navbar from './Navbar'
 import { PieGraph } from './Pie';
@@ -32,7 +31,7 @@ const Landing = () => {
                             </div>
                         </div>
                     </div>
-                </Col>
+                </Col>  
                 <Col md={6}>
                     <div className="head_right">
                         <div className="imageContainer d-flex justify-content-end align-items-center shadow-sm rounded">
