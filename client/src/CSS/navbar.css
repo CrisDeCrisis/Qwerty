@@ -17,6 +17,19 @@
     text-transform: capitalize;
 }
 
+#btn-register{
+    background: transparent;
+    border: 1px solid #fb1c15;
+    color: #fb1c15;
+    transition: 0.5s;
+}
+
+#btn-register:hover {
+    background: #8b0d09;
+    border: none;
+    color: #fff;
+}
+
 a {
     text-decoration: none;
 }
