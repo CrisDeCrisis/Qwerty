@@ -17,6 +17,7 @@ import {
     from 'mdb-react-ui-kit';
 import Button from 'react-bootstrap/Button';
 import { registerUser } from '../actions/actions.jsx';
+import Swal from 'sweetalert2'
 
 function Register() {
 
@@ -38,12 +39,23 @@ function Register() {
         const register = await registerUser(name, lastName, gender, birth, country.name, email, password, rol, bloodType);
 
         if (register.error) {
-            alert("DATOS FALTANTES O ERRÓNEOS");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Algo salió mal!'
+            });
+            return;
         } else {
+            Swal.fire({
+                icon: "success",
+                title: "Usuario registrado con éxito",
+                showConfirmButton: false,
+                timer: 1500
+            });
             navigate('/login');
         }
 
-        
+
     }
 
 

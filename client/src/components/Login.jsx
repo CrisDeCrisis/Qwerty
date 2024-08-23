@@ -27,7 +27,12 @@ function Login() {
         const login = await logUser(email, password);
 
         if (login.error) {
-            alert("USUARIO O CONTRASEÑA INCORRECTA");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Algo salió mal!'
+            });
+            return;
         } else {
             navigate('/home');
         }
@@ -35,7 +40,7 @@ function Login() {
     }
 
     return (
-        <MDBContainer fluid style={{height: '100vh'}}>
+        <MDBContainer fluid style={{ height: '100vh' }}>
             <form onSubmit={handleEmailChange} className='h-100'>
                 <MDBRow className='d-flex justify-content-center align-items-center h-100'>
                     <MDBCol col='12'>
@@ -55,7 +60,7 @@ function Login() {
                                 </Button>
 
                                 <div>
-                                    <p className="mb-0">No tienes una cuenta? <Link to={'/register'} class="text-dark-50 fw-bold" style={{textDecoration: 'none', color: 'rgba(255, 0, 0, 0.685)'}}>Registrate</Link>
+                                    <p className="mb-0">No tienes una cuenta? <Link to={'/register'} class="text-dark-50 fw-bold" style={{ textDecoration: 'none', color: 'rgba(255, 0, 0, 0.685)' }}>Registrate</Link>
                                     </p>
                                 </div>
                             </MDBCardBody>

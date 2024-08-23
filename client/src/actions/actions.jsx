@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 export async function logUser(Email, Contrasenia) {
     try {
         const response = await fetch('http://localhost:3368/user/login', {
@@ -24,12 +26,7 @@ export async function registerUser(NombreUsuario, ApellidoUsuario, Genero, Fecha
         return regex.test(contrasenia);
     }
 
-    if (!validarContrasenia(Contrasenia)) {
-        alert('La contraseña no cumple con los requisitos. Debe tener al menos 8 caracteres, una mayúscula y un número.');
-        return; 
-    }
-
-    try {   
+    try {
         const response = await fetch('http://localhost:3368/user/register', {
             method: 'POST',
             headers: {
