@@ -18,7 +18,7 @@ const Cards = React.forwardRef(({NombreUsuario, Genero, Pais, Roles, TipoSangre}
           {Roles}
          </Card.Text>
          <Card.Title>Grupo sanguíneo: {TipoSangre}</Card.Title>
-         <Button variant="primary">Comprar</Button>
+         <Button variant="primary" className='fw-bold mt-2' id='btn-login'>Contactar</Button>
        </Card.Body>
      
   )

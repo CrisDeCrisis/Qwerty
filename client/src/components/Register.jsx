@@ -3,7 +3,7 @@ import '../CSS/register.css';
 import CountrySelect from 'react-bootstrap-country-select';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import gota from '../assets/gota.png';
+import logo from '../assets/logo-bl.png';
 import { useNavigate } from 'react-router-dom';
 import {
     MDBContainer,
@@ -57,14 +57,14 @@ function Register() {
 
                             <MDBRow className='g-0'>
 
-                                <MDBCol md='4' className="d-flex align-items-center">
-                                    <MDBCardImage src={gota} alt="Sample photo" className="p-2 rounded-start" fluid />
+                                <MDBCol md='4' className="mt-5 d-flex flex-column align-items-center">
+                                    <h1 style={{ color: '#b91616' }}>BloodLink</h1>
+                                    <MDBCardImage src={logo} alt="Sample photo" className="p-2 rounded-start" fluid />
                                 </MDBCol>
 
                                 <MDBCol md='8'>
 
-                                    <MDBCardBody className='text-black d-flex flex-column justify-content-center'>
-                                        <h1 style={{ color: '#b91616' }}>BloodLink</h1>
+                                    <MDBCardBody className='mt-5 text-black d-flex flex-column justify-content-center'>
 
                                         <MDBRow>
 
