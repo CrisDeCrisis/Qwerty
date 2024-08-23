@@ -1,5 +1,3 @@
-import Swal from 'sweetalert2';
-
 export async function logUser(Email, Contrasenia) {
     try {
         const response = await fetch('http://localhost:3368/user/login', {
