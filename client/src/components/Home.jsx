@@ -1,3 +1,4 @@
+import '../CSS/home.css'
 import React, { useEffect, useState } from 'react'
 import { getUsersByBlood } from '../actions/actions'
 import { PaginatedList } from './Paginado'
@@ -17,7 +18,7 @@ function Home() {
     }, []);
 
     return (
-        <div className=''>
+        <div className='container-cards border rounded'>
             <PaginatedList items={users} />
         </div>
     )
