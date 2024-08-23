@@ -4,12 +4,18 @@ import Button from 'react-bootstrap/Button';
 import NavBar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import { FaUserCircle } from 'react-icons/fa'; 
 import '../CSS/paginado.css';
 import { Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom'; 
 
 export const PaginatedList = ({ items }) => {
+  
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerPage = 8;
+  const navigate = useNavigate();
 
   const nextPage = () => {
     setCurrentIndex((prevIndex) =>
@@ -23,6 +29,12 @@ export const PaginatedList = ({ items }) => {
 
   const currentItems = items.slice(currentIndex, currentIndex + itemsPerPage);
 
+  const handleLogout = () => {
+    localStorage.removeItem('authToken'); 
+    navigate('/login', { replace: true }); 
+    console.log('Cerrar sesión');
+  };
+
   return (
     <div className="container p-4">
       <div className="mb-5">
@@ -31,7 +43,19 @@ export const PaginatedList = ({ items }) => {
             <NavBar.Toggle aria-controls="basic-navbar-nav" />
             <h1 style={{ color: '#b91616' }}>BloodLink</h1>
             <NavBar.Collapse id="basic-navbar-nav">
-              <Nav className="ms-auto text-center d-flex justify-content-center align-items-center"></Nav>
+              <Nav className="ms-auto text-center d-flex justify-content-center align-items-center">
+                <DropdownButton
+                  align="end"
+                  title={<FaUserCircle size={30} />}
+                  id="dropdown-menu-align-end"
+                  variant='danger'
+                >
+                  <Dropdown.Item
+                    onClick={handleLogout}
+                    id='logout'
+                  >Cerrar sesión</Dropdown.Item>
+                </DropdownButton>
+              </Nav>
             </NavBar.Collapse>
           </Container>
         </NavBar>

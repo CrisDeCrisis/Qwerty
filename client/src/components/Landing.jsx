@@ -31,7 +31,7 @@ const Landing = () => {
                             </div>
                         </div>
                     </div>
-                </Col>
+                </Col>  
                 <Col md={6}>
                     <div className="head_right">
                         <div className="imageContainer d-flex justify-content-end align-items-center shadow-sm rounded">
