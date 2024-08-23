@@ -14,7 +14,7 @@ import {
 import '../CSS/login.css';
 import { logUser } from '../actions/actions.jsx';
 
-function App() {
+function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -68,4 +68,4 @@ function App() {
     );
 }
 
-export default App; 
+export default Login; 

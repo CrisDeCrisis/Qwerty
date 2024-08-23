@@ -5,7 +5,8 @@ import Landing from './components/Landing.jsx'; // Otro componente, puede ser el
 import Register from './components/Register.jsx';  // Importa tu componente Register
 import Login from './components/Login.jsx'; // Otro componente, puede ser el principal
 import Home from './components/Home.jsx';
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.css'; // or include from a CDN
+import 'react-bootstrap-country-select/dist/react-bootstrap-country-select.css';
 
 function App() {
   return (

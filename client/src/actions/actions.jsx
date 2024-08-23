@@ -19,7 +19,17 @@ export async function logUser(Email, Contrasenia) {
 
 export async function registerUser(NombreUsuario, ApellidoUsuario, Genero, FechaNacimiento, Pais, Email, Contrasenia, Roles, TipoSangre) {
 
-    try {
+    function validarContrasenia(contrasenia) {
+        const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+        return regex.test(contrasenia);
+    }
+
+    if (!validarContrasenia(Contrasenia)) {
+        alert('La contraseña no cumple con los requisitos. Debe tener al menos 8 caracteres, una mayúscula y un número.');
+        return; 
+    }
+
+    try {   
         const response = await fetch('http://localhost:3368/user/register', {
             method: 'POST',
             headers: {
@@ -28,7 +38,8 @@ export async function registerUser(NombreUsuario, ApellidoUsuario, Genero, Fecha
             body: JSON.stringify({ NombreUsuario, ApellidoUsuario, Genero, FechaNacimiento, Pais, Email, Contrasenia, Roles, TipoSangre }),
         });
 
-        const data = response.json()
+        const data = await response.json()
+        console.log(data);
         return data;
 
     } catch (error) {
@@ -41,7 +52,8 @@ export async function getUsers() {
     try {
         const response = await fetch('http://localhost:3368/user')
 
-        return await response.json()
+        const data = await response.json();
+        return data;
 
     } catch (error) {
         console.error('Error al realizar la solicitud:', error);

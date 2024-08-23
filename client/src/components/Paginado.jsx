@@ -5,7 +5,7 @@ import '../CSS/home.css'
 
 export const PaginatedList = ({ items }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const itemsPerPage = 5;
+    const itemsPerPage = 6;
 
     const nextPage = () => {
         setCurrentIndex((prevIndex) => Math.min(prevIndex + itemsPerPage, items.length));
@@ -19,9 +19,9 @@ export const PaginatedList = ({ items }) => {
 
     return (
         <div className='container p-5'>
-            <ul className='row g-2'>
+            <ul className='d-flex flex-wrap'>
                 {currentItems.map((user, index) => (
-                    <li className='col-4 list-group-item' key={index}>
+                    <li className='p-2 col-4 d-flex justify-content-center list-group-item' key={index}>
                         <Card
                             NombreUsuario={user.NombreUsuario}
                             Genero={user.Genero}
@@ -32,12 +32,14 @@ export const PaginatedList = ({ items }) => {
                     </li>
                 ))}
             </ul>
-            <button onClick={prevPage} disabled={currentIndex === 0}>
-                Anterior
-            </button>
-            <button onClick={nextPage} disabled={currentIndex + itemsPerPage >= items.length}>
-                Siguiente
-            </button>
+            <div className='d-flex justify-content-center'> 
+                <button onClick={prevPage} disabled={currentIndex === 0}>
+                    Anterior
+                </button>
+                <button onClick={nextPage} disabled={currentIndex + itemsPerPage >= items.length}>
+                    Siguiente
+                </button>
+            </div>
         </div>
     );
 };

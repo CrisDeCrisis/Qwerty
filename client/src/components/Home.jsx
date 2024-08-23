@@ -17,7 +17,9 @@ function Home() {
     }, []);
 
     return (
-        <PaginatedList items={users} />
+        <div className=''>
+            <PaginatedList items={users} />
+        </div>
     )
 }
 
