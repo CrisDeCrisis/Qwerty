@@ -34,12 +34,6 @@ function Login() {
             });
             return;
         } else {
-            Swal.fire({
-                icon: 'success',
-                title: 'Login exitoso',
-                showConfirmButton: false,
-                timer: 1500
-            });
             navigate('/home');
         }
     };
