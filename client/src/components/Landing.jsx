@@ -2,7 +2,9 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import '../CSS/landing.css';
 import gota from '../assets/gota.png';
+import logo from '../assets/logo-bl.png';
 import Navbar from './Navbar'
+import { PieGraph } from './Pie';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -20,24 +22,21 @@ const Landing = () => {
                 <Navbar />
             </div>
             <Row>
-                <Col md={6} className='p-lg-5'>
-                    <div className="head_left">
-                        <div className="w-75 mt-2 h_title">
-                            <h1 style={{ color: '#676767' }}>With Our Nutritious</h1>
-                            <h1 style={{ color: '#676767' }}>Meal Plans</h1>
-                        </div>
-                        <p className='text-secondary'>
-                            Discover a world of delicious salad at our online salad paradise. salad meals are ready to eat in a minutes so save time energy.
-                        </p>
-                        <div className="d-flex justify-content-between align-items-start w-50 mt-4">
-                            <Button onClick={handleLoginClick} id='btn-login' className='fw-bold border-0'>Empieza a donar</Button>
+                <Col md={6} className='p-lg-4'>
+                    <div className="head_left w-100 h-100">
+                        <div className="w-75 h_title h-100  w-100">
+                            <h1 className='rounded bg-danger text-white d-flex justify-content-center'>Dona vida</h1>
+                            <h1 className='d-flex justify-content-center'>Comparte esperanza</h1>
+                            <div className='w-100 mt-5'>
+                                <PieGraph />
+                            </div>
                         </div>
                     </div>
                 </Col>
                 <Col md={6}>
                     <div className="head_right">
                         <div className="imageContainer d-flex justify-content-end align-items-center shadow-sm rounded">
-                            <img src={gota} alt="headerr-image" className='head_rightImg' />
+                            <img src={logo} alt="headerr-image" className='head_rightImg' />
                         </div>
                     </div>
                 </Col>
