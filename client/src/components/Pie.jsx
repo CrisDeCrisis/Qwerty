@@ -18,8 +18,8 @@ defaults.font.size = 14;
 // Componente PieGraph
 export const PieGraph = () => {
     return (
-        <div className='pie-container'>
             <Pie
+                style={{ width: '100%', height: '100%' }}
                 data={{
                     labels: pieData.map(data => data.label), // Recorremos el array de objetos y obtenemos el valor del eje X
                     datasets: [ // Creamos un array de objetos con los datos de la gráfica
@@ -35,7 +35,7 @@ export const PieGraph = () => {
                                 'rgba(255, 159, 64, 0.2)',
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
-                            ],
+                            ], 
                             borderColor: [
                                 'rgba(255, 99, 132, 1)',
                                 'rgba(54, 162, 235, 1)',
@@ -57,6 +57,5 @@ export const PieGraph = () => {
                     }
                 }}
             />
-        </div>
     )
 }
