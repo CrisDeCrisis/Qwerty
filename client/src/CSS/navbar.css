@@ -1,0 +1,39 @@
+.bg_login {
+    background: #fb1c15;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-transform: capitalize;
+    transition: 0.5s;
+}
+
+.bg_login:hover {
+    background: #8b0d09;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-transform: capitalize;
+}
+
+#btn-register{
+    background: transparent;
+    border: 1px solid #fb1c15;
+    color: #fb1c15;
+    transition: 0.5s;
+}
+
+#btn-register:hover {
+    background: #8b0d09;
+    border: none;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+}
+
+#navbar {
+    box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.245);
+}
