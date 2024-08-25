@@ -21,7 +21,6 @@ const userSchema = new Schema(
     },
     Pais: {
       type: String,
-      required: true,
     },
     Email: {
       type: String,
